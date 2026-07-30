@@ -31,7 +31,7 @@ class DeduplicateStep: public Transformation {
 class AggregateByRegionStep: public Transformation {
     public:
         using Transformation::Transformation; //Same fix as dedup
-
+    
         Transformation* clone() const override; 
         vector<string> apply(vector<string> ) override;
 };

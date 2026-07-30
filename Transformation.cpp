@@ -49,3 +49,6 @@ Transformation* AggregateByRegionStep::clone() const{
     return new AggregateByRegionStep(*this);
 }
 
+Transformation::~Transformation(){
+   
+}
