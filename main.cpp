@@ -14,7 +14,7 @@ int main(){
     Transformation* t = registry.create("dedup");
     if (t){
         std::cout << "Created: " << t->getName() << "\n";
-        std::vector<std::string> v {"a","a","b","b","b","c","c"};
+        std::vector<std::string> v {"a","a","b","a"};
         auto out = t->apply(v);
         std::cout << "apply(dedup):";
         for (auto &s : out) std::cout << ' ' << s;
