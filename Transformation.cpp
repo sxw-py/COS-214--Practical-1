@@ -34,7 +34,7 @@ Transformation* DeduplicateStep::clone() const{
 
 vector<string> AggregateByRegionStep::apply(vector<string> arr){
     string out = "COUNT=";
-    out += to_string(arr.capacity());
+    out += to_string(arr.size());
     vector<string> trans{out};
     return trans;
 }
