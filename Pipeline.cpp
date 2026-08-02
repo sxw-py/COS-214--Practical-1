@@ -67,3 +67,15 @@ void Pipeline::transform(){
  }
 
  //Task 4 implementations
+ RunCheckpoint* Pipeline::createCheckpoint(){
+    return new RunCheckpoint(this->stage, this->records);
+}
+
+void Pipeline::restore(RunCheckpoint* cp){
+    if (cp == nullptr){
+        return;
+    }
+
+    this->records = cp->getRecords();
+    this->stage = cp->getStage();
+}
