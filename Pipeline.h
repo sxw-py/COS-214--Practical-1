@@ -25,8 +25,9 @@ class Pipeline{
         Pipeline(ConnectorFactory*);
         void run();
         void addStep(Transformation*);
-        //RunCheckpoint* createCheckpoint();
-        //void restore(RunCheckpoint*);
+        //for Thando :) just uncomment and implement in cpp only these 2
+        // RunCheckpoint* createCheckpoint();
+        // void restore(RunCheckpoint*);
         virtual ~Pipeline();
     
 };
