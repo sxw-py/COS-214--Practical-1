@@ -65,3 +65,5 @@ void Pipeline::transform(){
     cout << "Streaming load: " << records.size() << " records streamed\n";
     stage = 4;
  }
+
+ //Task 4 implementations
