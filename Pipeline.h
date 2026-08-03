@@ -7,7 +7,6 @@
 #include "Task1/ConnectorFactory.h"
 #include "Transformation.h"
 #include "RunCheckpoint.h"
-//#include "Task4/RunCheckpoint.h"
 
 using namespace std;
 
@@ -36,12 +35,16 @@ class BatchPipeline : public Pipeline{
     protected:
         void extract() override;
         void load() override;
+    public:
+        using Pipeline::Pipeline;
 };
 
 class StreamingPipeline : public Pipeline{
     protected:
         void extract() override;
         void load() override;
+    public:
+        using Pipeline::Pipeline;
 };
 
 
