@@ -6,6 +6,7 @@
 #include <map>
 #include "Task1/ConnectorFactory.h"
 #include "Transformation.h"
+#include "RunCheckpoint.h"
 //#include "Task4/RunCheckpoint.h"
 
 using namespace std;
@@ -25,9 +26,8 @@ class Pipeline{
         Pipeline(ConnectorFactory*);
         void run();
         void addStep(Transformation*);
-        //for Thando :) just uncomment and implement in cpp only these 2
-        // RunCheckpoint* createCheckpoint();
-        // void restore(RunCheckpoint*);
+        RunCheckpoint* createCheckpoint();
+        void restore(RunCheckpoint*);
         virtual ~Pipeline();
     
 };
@@ -43,8 +43,6 @@ class StreamingPipeline : public Pipeline{
         void extract() override;
         void load() override;
 };
-
-
 
 
 #endif
