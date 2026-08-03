@@ -7,15 +7,24 @@ Pipeline:: Pipeline(ConnectorFactory* fact){
 }
 
 void Pipeline::addStep(Transformation* step){
+    if (step == nullptr){
+        return;
+    }
     steps.push_back(step);
 }
 
 Pipeline::~Pipeline(){
     for (auto step : steps){
+        if (step == nullptr){
+            continue;
+        }
+
         delete step;
     }
 
-    delete factory;
+    if (factory != nullptr){
+        delete factory;
+    }
 }
 
 void Pipeline::run(){
@@ -26,6 +35,10 @@ void Pipeline::run(){
 }
 
 void Pipeline::connect() {
+    if (factory == nullptr){
+        return;
+    }
+
     Connector* connector = factory->createConnector();
     cout << "Connecting to " << connector->getSource() << "\n";
     stage = 1;
@@ -34,6 +47,9 @@ void Pipeline::connect() {
 
 void Pipeline::transform(){
     for (auto step : steps){
+        if (step == nullptr){
+            continue;
+        }
         records = step->apply(records);
     }
 
@@ -41,6 +57,10 @@ void Pipeline::transform(){
 }
 
  void BatchPipeline::extract(){
+    if (factory == nullptr){
+        return;
+    }
+
      Connector* connector = factory->createConnector();
      records = connector->extract();
      cout << "Batch extract: " << records.size() << " records\n";
@@ -54,6 +74,10 @@ void Pipeline::transform(){
  }
 
   void StreamingPipeline::extract(){
+    if (factory == nullptr){
+        return;
+    }
+
      Connector* connector = factory->createConnector();
      records = connector->extract();
      cout << "Streaming extract: " << records.size() << " records\n";
